@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGE FORM</title>
+</head>
+<body bgcolor="#dbc5ae" align="center">
+    <h1>ORDER HERE</h1>
+    <form>
+        <label>NAMA :</label><br>
+        <input type="text" id="nama" placeholder="your name" ><br><br>
+
+        <label>E-MAIL :</label><br>
+        <input type="email" id="email" placeholder="your e-mail"><br><br>
+
+        <label>KONTAK :</label><br>
+        <input type="number" id="kontak" placeholder="your phone number"><br><br>
+
+        <label>ALAMAT :</label><br>
+        <input type="text" id="alamat" placeholder="your address"><br><br>
+
+        <table border="1" align="center">
+            <tr>
+                <th>
+                    <label>NOVEL</label>
+                </th>
+            </tr>
+            <tr>
+                <td align="left">
+                    <input type="checkbox" name="judul" value="70 Mil">70 Mil (81.000)<br><br>
+                    <input type="checkbox" name="judul" value="Azzamine">Azzamine (89.000)<br><br>
+                    <input type="checkbox" name="judul" value="Butterflies">Butterflies (84.000)<br><br>
+                    <input type="checkbox" name="judul" value="Galaksi">Galaksi (99.000)<br><br>
+                    <input type="checkbox" name="judul" value="LautBercerita">Laut Bercerita (103.000)<br><br>
+                    <input type="checkbox" name="judul" value="Septihan">Septihan (99.000)<br><br>
+                </td>
+            </tr>
+        </table>
+
+        <br><br>
+        <table border="1" align="center">
+            <tr>
+                <th>
+                    <label>METODE PEMBAYARAN </label>
+                </th>
+            </tr>
+            <tr>
+                <td align="left">
+                    <input type="radio" id="bayar" name="opsi" value="BRI">BRI <br><br>
+                    <input type="radio" id="bayar" name="opsi" value="BNI">BNI <br><br>
+                    <input type="radio" id="bayar" name="opsi" value="MANDIRI">MANDIRI <br><br>
+                    <input type="radio" id="bayar" name="opsi" value="DANA">DANA <br><br>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        
+        <input type="button" onclick="getData()" value="KIRIM">
+        <input type="reset" name="reset" value="ULANG">
+    </form>
+
+    <script>
+        function getData() {
+        var nama = document.getElementById("nama").value;
+        var email = document.getElementById("email").value;
+        var kontak = document.getElementById("kontak").value;
+        var alamat = document.getElementById("alamat").value;
+
+        var subjudul = document.getElementsByName("judul");
+        var novel = [];
+        for (var i = 0; i < subjudul.length; i++){
+            if(subjudul[i].checked){
+                novel.push (subjudul[i].value);
+            }
+        }
+        var opsi = document.querySelector('input[name="opsi"]:checked').value;
+
+        alert("DATA ANDA TELAH TERSIMPAN \nHAPPY SHOPPING" 
+        + "\n\nNAMA : " + nama + "\n\nE-MAIL : " + email 
+        + "\n\nKONTAK : " + kontak + "\n\nALAMAT : " + alamat
+        + "\n\nJUDUL : " + novel.join(", ") + "\n\nPEMBAYARAN : " + opsi);
+
+        
+        displayData(nama, email, kontak, alamat, novel, opsi);
+        }
+    </script>
+    <br><br>
+    <div id="output"></div>
+    <script src="datauser.js"></script>
+</body>
+</html>
